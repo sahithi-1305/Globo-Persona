@@ -1,0 +1,82 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Email Automation Simulator API",
+    "version": "1.0.0",
+    "description": "API for simulating email warmups, interactions, and analytics."
+  },
+  "paths": {
+    "/api/accounts": {
+      "get": {
+        "summary": "Fetch Account Details",
+        "responses": { "200": { "description": "A list of accounts" } }
+      },
+      "post": {
+        "summary": "Create Account",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": { "type": "string" },
+                  "name": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        "responses": { "201": { "description": "Account created" } }
+      }
+    },
+    "/api/accounts/{id}/status": {
+      "patch": {
+        "summary": "Enable/Disable Account",
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": { "status": { "type": "string", "enum": ["active", "inactive"] } }
+              }
+            }
+          }
+        },
+        "responses": { "200": { "description": "Account status updated" } }
+      }
+    },
+    "/api/activity/start": {
+      "post": { "summary": "Start Automated Activity", "responses": { "200": { "description": "Activity engine started" } } }
+    },
+    "/api/activity/pause": {
+      "post": { "summary": "Pause Activity Engine", "responses": { "200": { "description": "Activity engine paused" } } }
+    },
+    "/api/activity/resume": {
+      "post": { "summary": "Resume Activity Engine", "responses": { "200": { "description": "Activity engine resumed" } } }
+    },
+    "/api/activity/step": {
+      "post": { "summary": "Trigger a manual simulation step", "responses": { "200": { "description": "Simulation step completed" } } }
+    },
+    "/api/analytics/reputation": {
+      "get": { "summary": "Fetch Reputation Growth", "responses": { "200": { "description": "Reputation scores of accounts" } } }
+    },
+    "/api/analytics/statistics": {
+      "get": { "summary": "Fetch Activity Statistics", "responses": { "200": { "description": "Daily activity statistics" } } }
+    },
+    "/api/analytics/trends": {
+      "get": { "summary": "Fetch Interaction Trends", "responses": { "200": { "description": "Trend data based on log types" } } }
+    },
+    "/api/logs": {
+      "get": { "summary": "Fetch Logs", "responses": { "200": { "description": "List of email logs" } } }
+    },
+    "/api/logs/daily": {
+      "get": { "summary": "Fetch Daily Activity", "responses": { "200": { "description": "Email logs for today" } } }
+    },
+    "/api/logs/engagement": {
+      "get": { "summary": "Fetch Engagement History", "responses": { "200": { "description": "List of reply logs (engagements)" } } }
+    }
+  }
+}

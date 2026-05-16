@@ -1,0 +1,52 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model Account {
+  id               String   @id @default(cuid())
+  email            String   @unique
+  name             String?
+  status           String   @default("active") // active, inactive
+  dailyLimit       Int      @default(10)
+  currentSends     Int      @default(0)
+  reputationScore  Float    @default(50.0)
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  sentLogs         EmailLog[] @relation("Sender")
+  receivedLogs     EmailLog[] @relation("Receiver")
+}
+
+model EmailLog {
+  id           String   @id @default(cuid())
+  senderId     String
+  receiverId   String
+  subject      String
+  body         String
+  type         String   @default("initial") // initial, reply
+  status       String   @default("sent") // sent, delivered, opened, replied
+  createdAt    DateTime @default(now())
+
+  sender       Account  @relation("Sender", fields: [senderId], references: [id])
+  receiver     Account  @relation("Receiver", fields: [receiverId], references: [id])
+}
+
+model AnalyticsDaily {
+  id               String   @id @default(cuid())
+  date             DateTime
+  emailsSent       Int      @default(0)
+  emailsReceived   Int      @default(0)
+  positiveReplies  Int      @default(0)
+  
+  @@unique([date])
+}
+
+model EngineState {
+  id        String   @id @default("singleton")
+  status    String   @default("paused") // running, paused
+  updatedAt DateTime @updatedAt
+}
