@@ -8,19 +8,19 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { 
-  Select, 
-  SelectContent, 
-  SelectItem, 
-  SelectTrigger, 
-  SelectValue 
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue
 } from "@/components/ui/select";
-import { 
-  ArrowLeft, 
-  Send, 
-  Save, 
-  Calendar, 
-  Eye, 
+import {
+  ArrowLeft,
+  Send,
+  Save,
+  Calendar,
+  Eye,
   Settings2,
   Sparkles,
   Info
@@ -85,9 +85,9 @@ export default function CreateCampaignPage() {
               <div className="grid gap-6 md:grid-cols-2">
                 <div className="space-y-2">
                   <Label htmlFor="name" className="text-sm font-bold text-slate-700 ml-1">Campaign Name</Label>
-                  <Input 
-                    id="name" 
-                    placeholder="e.g. Summer Sale 2024" 
+                  <Input
+                    id="name"
+                    placeholder="e.g. Summer Sale 2024"
                     className="h-12 bg-slate-50/50 border-slate-200 focus:bg-white focus:ring-4 focus:ring-indigo-50 transition-all rounded-xl font-medium"
                   />
                   <p className="text-[10px] text-slate-400 font-bold uppercase tracking-wider ml-1">Internal use only</p>
@@ -112,9 +112,9 @@ export default function CreateCampaignPage() {
               <div className="space-y-2">
                 <Label htmlFor="subject" className="text-sm font-bold text-slate-700 ml-1">Email Subject Line</Label>
                 <div className="relative group">
-                  <Input 
-                    id="subject" 
-                    placeholder="What will your subscribers see?" 
+                  <Input
+                    id="subject"
+                    placeholder="What will your subscribers see?"
                     className="h-12 bg-slate-50/50 border-slate-200 focus:bg-white focus:ring-4 focus:ring-indigo-50 transition-all rounded-xl font-medium pr-10"
                   />
                   <div className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-300 hover:text-indigo-500 cursor-help transition-colors">
@@ -129,9 +129,9 @@ export default function CreateCampaignPage() {
 
               <div className="space-y-2">
                 <Label htmlFor="content" className="text-sm font-bold text-slate-700 ml-1">Email Content</Label>
-                <Textarea 
-                  id="content" 
-                  placeholder="Write your email content here or use a template..." 
+                <Textarea
+                  id="content"
+                  placeholder="Write your email content here or use a template..."
                   className="min-h-[300px] bg-slate-50/50 border-slate-200 focus:bg-white focus:ring-4 focus:ring-indigo-50 transition-all rounded-2xl font-medium p-6"
                 />
               </div>
@@ -151,17 +151,17 @@ export default function CreateCampaignPage() {
             <CardContent className="p-6 space-y-6">
               <div className="space-y-2">
                 <Label htmlFor="date" className="text-xs font-bold text-slate-500 uppercase tracking-wider">Send Date</Label>
-                <Input 
-                  id="date" 
-                  type="date" 
+                <Input
+                  id="date"
+                  type="date"
                   className="h-11 bg-slate-50 border-slate-200 rounded-xl font-bold text-slate-900"
                 />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="time" className="text-xs font-bold text-slate-500 uppercase tracking-wider">Send Time</Label>
-                <Input 
-                  id="time" 
-                  type="time" 
+                <Input
+                  id="time"
+                  type="time"
                   className="h-11 bg-slate-50 border-slate-200 rounded-xl font-bold text-slate-900"
                 />
               </div>
@@ -173,7 +173,7 @@ export default function CreateCampaignPage() {
               </div>
             </CardContent>
             <CardFooter className="p-6 bg-slate-50/50 border-t border-slate-100">
-              <Button 
+              <Button
                 onClick={handleSubmit}
                 disabled={isLoading}
                 className="w-full h-12 bg-indigo-600 hover:bg-indigo-700 text-white font-bold shadow-lg shadow-indigo-100 rounded-xl transition-all"
